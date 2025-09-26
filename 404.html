@@ -192,9 +192,7 @@
             </div>
         </div>
 
-        <button class="browser-button" onclick="openInBrowser()">
-            Open in Browser
-        </button>
+        
     </div>
 
     <!-- Simple redirect message for others -->
@@ -233,6 +231,16 @@
                 }, 1000);
             }
         })();
+
+        function openInBrowser() {
+            // Attempt to open in browser
+            if (window.targetUrl) {
+                window.open(window.targetUrl, '_blank');
+                // Also try direct navigation as fallback
+                setTimeout(function () {
+                    window.location.href = window.targetUrl;
+                }, 500);
+            }
         }
     </script>
 </body>
